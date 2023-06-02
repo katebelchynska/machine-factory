@@ -8,7 +8,7 @@ export const PATH = {
   PAGE_404: "*",
 };
 
-export const router = [
+export const ROUTER = [
   {
     path: PATH.MAIN_PAGE,
     Element: MachineActions,

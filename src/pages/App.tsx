@@ -3,13 +3,13 @@ import store from "../store/";
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { router } from '../constants/navigation';
+import { ROUTER } from '../constants/navigation';
 
 const App = () => (
   <Provider store={store}>
      <BrowserRouter>
       <Routes>
-        {router.map(({ path, Element }) => (
+        {ROUTER.map(({ path, Element }) => (
           <Route key={path} path={path} element={<Element />} />
         ))}
       </Routes>
