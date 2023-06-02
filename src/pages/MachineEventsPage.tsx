@@ -8,7 +8,8 @@ import {
   TextField,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../hooks/hooks";
+import { v4 as uuidv4 } from 'uuid';
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
   Event,
   machineEventAdd,
@@ -26,21 +27,18 @@ const MachineEvents = () => {
 
   useEffect(() => {
     setList(selectedMachineEvents);
-    return () => {
-      console.log("component unmounting...");
-    };
   }, [selectedMachineEvents]);
 
-  function addMachineEvent() {
+  const addMachineEvent = () => {
     const newMachineEvent = {
-      eventId: (list.length + 1).toString(),
+      eventId: uuidv4(),
       title: value,
     };
     dispatch(machineEventAdd(newMachineEvent));
     setValue("");
   }
 
-  function deleteMachineEvent() {
+  const deleteMachineEvent = () => {
     dispatch(machineEventDelete());
   }
 
