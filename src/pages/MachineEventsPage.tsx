@@ -16,7 +16,7 @@ import {
   machineEventDelete,
   machineEventSelector,
 } from "../slices/machineEvents/machineEventsSlice";
-import { MAIN_PAGE } from "../constants/routes";
+import { PATH } from "../constants/navigation";
 
 const MachineEvents = () => {
   const [value, setValue] = useState<string>("");
@@ -99,7 +99,7 @@ const MachineEvents = () => {
             ))}
           </List>
         </Box>
-        <Link color="orange" underline="hover" href={MAIN_PAGE}>
+        <Link color="orange" underline="hover" href={PATH.MAIN_PAGE}>
           Go to the main page
         </Link>
       </Box>
