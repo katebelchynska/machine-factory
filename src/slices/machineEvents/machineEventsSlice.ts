@@ -6,7 +6,7 @@ export interface Event {
   title: string;
 }
 
-const initialState: Array<Event> = [
+const initialState: Event[] = [
   {
     eventId: "",
     title: "",

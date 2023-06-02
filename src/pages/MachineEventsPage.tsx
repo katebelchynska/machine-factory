@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
   Event,
@@ -16,6 +16,7 @@ import {
   machineEventDelete,
   machineEventSelector,
 } from "../slices/machineEvents/machineEventsSlice";
+import { MAIN_PAGE } from "../constants/routes";
 
 const MachineEvents = () => {
   const [value, setValue] = useState<string>("");
@@ -36,11 +37,11 @@ const MachineEvents = () => {
     };
     dispatch(machineEventAdd(newMachineEvent));
     setValue("");
-  }
+  };
 
   const deleteMachineEvent = () => {
     dispatch(machineEventDelete());
-  }
+  };
 
   return (
     <Container maxWidth="md">
@@ -91,16 +92,14 @@ const MachineEvents = () => {
           }}
         >
           <List>
-            {list.map((item) => {
-              return (
-                <ListItem sx={{ color: "red" }} key={item.eventId}>
-                  {item.title}
-                </ListItem>
-              );
-            })}
+            {list.map((item) => (
+              <ListItem sx={{ color: "red" }} key={item.eventId}>
+                {item.title}
+              </ListItem>
+            ))}
           </List>
         </Box>
-        <Link color="orange" underline="hover" href="/">
+        <Link color="orange" underline="hover" href={MAIN_PAGE}>
           Go to the main page
         </Link>
       </Box>

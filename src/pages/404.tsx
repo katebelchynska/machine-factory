@@ -1,4 +1,5 @@
 import { Box, Container, Link } from "@mui/material";
+import { MAIN_PAGE } from "../constants/routes";
 
 const Page404 = () => (
   <Box
@@ -13,7 +14,7 @@ const Page404 = () => (
         <h1>Page doesn't exist</h1>
       </Box>
       <Box>
-        <Link href="/" underline="hover">
+        <Link href={MAIN_PAGE} underline="hover">
           Back to the main page
         </Link>
       </Box>

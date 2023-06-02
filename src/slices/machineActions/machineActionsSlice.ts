@@ -6,7 +6,7 @@ export interface Action {
   title: string;
 }
 
-const initialState: Array<Action> = [
+const initialState: Action[] = [
   {
     actionId: "",
     title: "",
