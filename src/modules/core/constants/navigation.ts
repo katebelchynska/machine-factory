@@ -1,6 +1,6 @@
-import Page404 from "../pages/404";
-import MachineActions from "../pages/MachineActionsPage";
-import MachineEvents from "../pages/MachineEventsPage";
+import Page404 from "../../404/404";
+import MachineActions from "../../machine/actions/MachineActions";
+import MachineEvents from "../../machine/events/MachineEvents";
 
 export const PATH = {
   MAIN_PAGE: "/",
