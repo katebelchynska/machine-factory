@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import machineEvents from '../slices/machineEvents/machineEventsSlice';
-import machineActions from '../slices/machineActions/machineActionsSlice';
+import machineEvents from '../../machine/events/store/machineEventsSlice';
+import machineActions from '../../machine/actions/store/machineActionsSlice';
  
 const store = configureStore({
     reducer: {machineEvents, machineActions},

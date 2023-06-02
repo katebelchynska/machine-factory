@@ -9,14 +9,14 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../core/store/hooks";
 import {
   Action,
   machineActionAdd,
   machineActionDelete,
   machineActionSelector,
-} from "../slices/machineActions/machineActionsSlice";
-import { PATH } from "../constants/navigation";
+} from "./store/machineActionsSlice";
+import { PATH } from "../../core/constants/navigation";
 
 const MachineActions = () => {
   const [value, setValue] = useState<string>("");

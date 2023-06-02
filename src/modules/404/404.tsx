@@ -1,5 +1,5 @@
 import { Box, Container, Link } from "@mui/material";
-import { PATH } from "../constants/navigation";
+import { PATH } from "../core/constants/navigation";
 
 const Page404 = () => (
   <Box

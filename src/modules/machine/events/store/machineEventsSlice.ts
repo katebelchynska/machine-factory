@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
+import { RootState } from "../../../core/store";
 
 export interface Event {
   eventId: string;
