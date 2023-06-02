@@ -5,7 +5,6 @@ import machineActions from '../slices/machineActions/machineActionsSlice';
 const store = configureStore({
     reducer: {machineEvents, machineActions},
     devTools: process.env.NODE_ENV !== 'production',
-    
 });
 
 export type AppDispatch = typeof store.dispatch;

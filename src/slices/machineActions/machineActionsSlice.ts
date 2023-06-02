@@ -4,7 +4,6 @@ import { RootState } from "../../store";
 export interface Action {
   actionId: string;
   title: string;
-  // ...
 }
 
 const initialState: Array<Action> = [
