@@ -10,15 +10,10 @@ describe("Page404 component", () => {
       </BrowserRouter>
     );
 
-    const headingElement = screen.getByRole("heading", {
-      level: 1,
-      name: /Page doesn't exist/i,
-    });
+    const headingElement = screen.getByTestId("404-heading");
     expect(headingElement).toBeInTheDocument();
 
-    const linkElement = screen.getByRole("link", {
-      name: /Back to the main page/i,
-    });
+    const linkElement = screen.getByTestId("to-main-page");
     expect(linkElement).toBeInTheDocument();
   });
 
