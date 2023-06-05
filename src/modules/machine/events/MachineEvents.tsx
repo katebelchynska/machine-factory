@@ -66,6 +66,7 @@ const MachineEvents = () => {
             sx={{ backgroundColor: "orange" }}
             variant="contained"
             onClick={addMachineEvent}
+            data-testId="add-event-btn"
           >
             push
           </Button>
@@ -73,6 +74,7 @@ const MachineEvents = () => {
             sx={{ backgroundColor: "orange" }}
             variant="contained"
             onClick={deleteMachineEvent}
+            data-testId="delete-event-btn"
           >
             pop
           </Button>

@@ -2,6 +2,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../core/store";
+import { initialEventsState } from "../../../test/mocks";
 import MachineEvents from "./MachineEvents";
 
 describe("MachineEvents component", () => {
@@ -24,33 +25,24 @@ describe("MachineEvents component", () => {
       </BrowserRouter>
     );
 
-    const addButton = screen.getByRole("button", { name: "push" });
-    const input = screen.getByLabelText("Add event to stack");
+    const addButton = screen.getByTestId("add-event-btn");
+    const inputEvent = screen.getByLabelText("Add event to stack");
 
-    fireEvent.change(input, { target: { value: "New Event" } });
+    fireEvent.change(inputEvent, { target: { value: "New Event" } });
     fireEvent.click(addButton);
   });
 
   it("should delete a machine event", () => {
-    // Mock the initial list of machine events
-    const initialState = {
-      machineEvents: [
-        { eventId: "1", title: "Event 1" },
-        { eventId: "2", title: "Event 2" },
-        { eventId: "3", title: "Event 3" },
-      ],
-    };
-
     render(
       <BrowserRouter>
         <Provider store={store}>
           <MachineEvents />
         </Provider>
       </BrowserRouter>,
-      { initialState }
+      { initialEventsState }
     );
 
-    const deleteButton = screen.getByRole("button", { name: "pop" });
+    const deleteButton = screen.getByTestId("delete-event-btn");
     fireEvent.click(deleteButton);
   });
 

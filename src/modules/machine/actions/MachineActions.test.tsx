@@ -2,6 +2,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../core/store/";
+import { initialActionsState } from "../../../test/mocks";
 import MachineActions from "./MachineActions";
 
 describe("MachineActions component", () => {
@@ -24,33 +25,24 @@ describe("MachineActions component", () => {
       </BrowserRouter>
     );
 
-    const addButton = screen.getByRole("button", { name: "enqueue" });
-    const input = screen.getByLabelText("Add action to queue");
+    const addButton = screen.getByTestId("add-action-btn");
+    const inputAction = screen.getByLabelText("Add action to queue");
 
-    fireEvent.change(input, { target: { value: "New Action" } });
+    fireEvent.change(inputAction, { target: { value: "New Action" } });
     fireEvent.click(addButton);
   });
 
   it("should delete a machine action", () => {
-    // Mock the initial list of machine actions
-    const initialState = {
-      machineActions: [
-        { actionId: "1", title: "Action 1" },
-        { actionId: "2", title: "Action 2" },
-        { actionId: "3", title: "Action 3" },
-      ],
-    };
-
     render(
       <BrowserRouter>
         <Provider store={store}>
           <MachineActions />
         </Provider>
       </BrowserRouter>,
-      { initialState }
+      { initialActionsState }
     );
 
-    const deleteButton = screen.getByRole("button", { name: "dequeue" });
+    const deleteButton = screen.getByTestId("delete-action-btn");
     fireEvent.click(deleteButton);
   });
 

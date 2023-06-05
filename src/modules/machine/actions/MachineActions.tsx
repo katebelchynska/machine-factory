@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { useAppDispatch, useAppSelector } from "../../core/store/hooks";
 import {
   Action,
@@ -37,11 +37,11 @@ const MachineActions = () => {
     };
     dispatch(machineActionAdd(newMachineAction));
     setValue("");
-  }
+  };
 
   const deleteMachineAction = () => {
     dispatch(machineActionDelete());
-  }
+  };
 
   return (
     <Container maxWidth="md">
@@ -62,10 +62,18 @@ const MachineActions = () => {
             justifyContent: "space-between",
           }}
         >
-          <Button variant="contained" onClick={addMachineAction}>
+          <Button
+            data-testid="add-action-btn"
+            variant="contained"
+            onClick={addMachineAction}
+          >
             enqueue
           </Button>
-          <Button variant="contained" onClick={deleteMachineAction}>
+          <Button
+            data-testid="delete-action-btn"
+            variant="contained"
+            onClick={deleteMachineAction}
+          >
             dequeue
           </Button>
         </Box>
