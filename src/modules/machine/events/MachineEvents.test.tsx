@@ -2,7 +2,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../core/store";
-import { initialEventsState } from "../../../test/mocks";
+import { initialEventsState } from "../../../test/mocks/events";
 import MachineEvents from "./MachineEvents";
 
 describe("MachineEvents component", () => {
@@ -26,7 +26,7 @@ describe("MachineEvents component", () => {
     );
 
     const addButton = screen.getByTestId("add-event-btn");
-    const inputEvent = screen.getByLabelText("Add event to stack");
+    const inputEvent = screen.getByTestId("event-input");
 
     fireEvent.change(inputEvent, { target: { value: "New Event" } });
     fireEvent.click(addButton);
@@ -55,7 +55,7 @@ describe("MachineEvents component", () => {
       </BrowserRouter>
     );
 
-    const link = screen.getByText("Go to the main page");
+    const link = screen.getByTestId("link-main-page");
     fireEvent.click(link);
   });
 });

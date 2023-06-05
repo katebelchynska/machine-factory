@@ -2,7 +2,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../core/store/";
-import { initialActionsState } from "../../../test/mocks";
+import { initialActionsState } from "../../../test/mocks/actions";
 import MachineActions from "./MachineActions";
 
 describe("MachineActions component", () => {
@@ -26,7 +26,7 @@ describe("MachineActions component", () => {
     );
 
     const addButton = screen.getByTestId("add-action-btn");
-    const inputAction = screen.getByLabelText("Add action to queue");
+    const inputAction = screen.getByTestId("action-input");
 
     fireEvent.change(inputAction, { target: { value: "New Action" } });
     fireEvent.click(addButton);
@@ -55,7 +55,7 @@ describe("MachineActions component", () => {
       </BrowserRouter>
     );
 
-    const link = screen.getByText("Go to machine events");
+    const link = screen.getByTestId("link-event-page");
     fireEvent.click(link);
   });
 });

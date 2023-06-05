@@ -79,6 +79,7 @@ const MachineActions = () => {
         </Box>
         <TextField
           fullWidth
+          inputProps={{ "data-testId": "action-input" }}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           label="Add action to queue"
@@ -97,7 +98,11 @@ const MachineActions = () => {
             })}
           </List>
         </Box>
-        <Link underline="hover" href={PATH.EVENTS_PAGE}>
+        <Link
+          data-testId="link-event-page"
+          underline="hover"
+          href={PATH.EVENTS_PAGE}
+        >
           Go to machine events
         </Link>
       </Box>

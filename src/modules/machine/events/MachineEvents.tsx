@@ -81,6 +81,7 @@ const MachineEvents = () => {
         </Box>
         <TextField
           fullWidth
+          inputProps={{ "data-testId": "event-input" }}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           label="Add event to stack"
@@ -101,7 +102,12 @@ const MachineEvents = () => {
             ))}
           </List>
         </Box>
-        <Link color="orange" underline="hover" href={PATH.MAIN_PAGE}>
+        <Link
+          data-testId="link-main-page"
+          color="orange"
+          underline="hover"
+          href={PATH.MAIN_PAGE}
+        >
           Go to the main page
         </Link>
       </Box>
