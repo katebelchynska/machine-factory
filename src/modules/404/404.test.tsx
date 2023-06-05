@@ -29,9 +29,7 @@ describe("Page404 component", () => {
       </BrowserRouter>
     );
 
-    const linkElement = screen.getByRole("link", {
-      name: /Back to the main page/i,
-    });
+    const linkElement = screen.getByTestId("to-main-page");
     expect(linkElement).toHaveAttribute("href", "/");
   });
 });

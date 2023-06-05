@@ -14,7 +14,11 @@ const Page404 = () => (
         <h1>Page doesn't exist</h1>
       </Box>
       <Box>
-        <Link href={PATH.MAIN_PAGE} underline="hover">
+        <Link
+          data-testId="to-main-page"
+          href={PATH.MAIN_PAGE}
+          underline="hover"
+        >
           Back to the main page
         </Link>
       </Box>
