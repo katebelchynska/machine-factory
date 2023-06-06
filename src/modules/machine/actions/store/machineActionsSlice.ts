@@ -1,17 +1,13 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
+import { RootState } from "../../../core/store";
 
 export interface Action {
   actionId: string;
   title: string;
 }
 
-const initialState: Action[] = [
-  {
-    actionId: "",
-    title: "",
-  },
-];
+const initialState: Action[] = [];
+
 const machineActionsSlice = createSlice({
   name: "machineActions",
   initialState,
