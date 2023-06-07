@@ -94,7 +94,7 @@ const MachineEvents = () => {
             justifyContent: "space-between",
           }}
         >
-          <List>
+          <List data-testId="event-list">
             {list.map((item) => (
               <ListItem sx={{ color: "red" }} key={item.eventId}>
                 {item.title}

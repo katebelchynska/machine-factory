@@ -6,12 +6,7 @@ export interface Event {
   title: string;
 }
 
-const initialState: Event[] = [
-  {
-    eventId: "",
-    title: "",
-  },
-];
+const initialState: Event[] = [];
 const machineEventsSlice = createSlice({
   name: "machineEvents",
   initialState,

@@ -92,7 +92,7 @@ const MachineActions = () => {
             justifyContent: "space-between",
           }}
         >
-          <List>
+          <List data-testId="action-list">
             {list.map((item) => {
               return <ListItem key={item.actionId}>{item.title}</ListItem>;
             })}
