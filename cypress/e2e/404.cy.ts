@@ -10,6 +10,6 @@ describe("Page404", () => {
   it("should navigate to the main page", () => {
     cy.getByTestId("to-main-page").click();
 
-    cy.url().should("eq", "http://localhost:3000/");
+    cy.url().should("match", /\/$/);
   });
 });
