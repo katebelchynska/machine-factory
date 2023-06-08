@@ -1,0 +1,14 @@
+{
+  "Page not found": "Page doesn't exist",
+  "Back to the main page": "Back to the main page",
+  "Machine Actions": "Machine Actions in Queue",
+  "Enqueue": "Enqueue",
+  "Dequeue": "Dequeue",
+  "Add action": "Add action to gueue",
+  "Go to events": "Go to machine events",
+  "Machine Events": "Machine Events in Stack",
+  "Push": "Push",
+  "Pop": "Pop",
+  "Add event": "Add event to stack",
+  "Go to the main page": "Go to the main page"
+}

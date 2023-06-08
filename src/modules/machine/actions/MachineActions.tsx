@@ -17,11 +17,14 @@ import {
   machineActionSelector,
 } from "./store/machineActionsSlice";
 import { PATH } from "../../core/constants/navigation";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../../components/LanguageSwitcher";
 
 const MachineActions = () => {
   const [value, setValue] = useState<string>("");
-
   const [list, setList] = useState<Array<Action>>([]);
+
+  const { t } = useTranslation();
 
   const selectedMachineActions = useAppSelector(machineActionSelector);
   const dispatch = useAppDispatch();
@@ -54,7 +57,8 @@ const MachineActions = () => {
           alignItems: "center",
         }}
       >
-        <h1>Machine Actions in Queue</h1>
+        <LanguageSwitcher />
+        <h1>{t("Machine Actions")}</h1>
         <Box
           sx={{
             minWidth: "40%",
@@ -67,14 +71,14 @@ const MachineActions = () => {
             variant="contained"
             onClick={addMachineAction}
           >
-            enqueue
+            {t("Enqueue")}
           </Button>
           <Button
             data-testid="delete-action-btn"
             variant="contained"
             onClick={deleteMachineAction}
           >
-            dequeue
+            {t("Dequeue")}
           </Button>
         </Box>
         <TextField
@@ -82,7 +86,7 @@ const MachineActions = () => {
           inputProps={{ "data-testId": "action-input" }}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          label="Add action to queue"
+          label={t("Add action")}
           variant="outlined"
         />
         <Box
@@ -103,7 +107,7 @@ const MachineActions = () => {
           underline="hover"
           href={PATH.EVENTS_PAGE}
         >
-          Go to machine events
+          {t("Go to events")}
         </Link>
       </Box>
     </Container>

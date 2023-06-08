@@ -17,11 +17,14 @@ import {
   machineEventSelector,
 } from "./store/machineEventsSlice";
 import { PATH } from "../../core/constants/navigation";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../../components/LanguageSwitcher";
 
 const MachineEvents = () => {
   const [value, setValue] = useState<string>("");
-
   const [list, setList] = useState<Array<Event>>([]);
+
+  const { t } = useTranslation();
 
   const selectedMachineEvents = useAppSelector(machineEventSelector);
   const dispatch = useAppDispatch();
@@ -54,7 +57,8 @@ const MachineEvents = () => {
           alignItems: "center",
         }}
       >
-        <h1>Machine Events in Stack</h1>
+        <LanguageSwitcher />
+        <h1>{t("Machine Events")}</h1>
         <Box
           sx={{
             minWidth: "40%",
@@ -68,7 +72,7 @@ const MachineEvents = () => {
             onClick={addMachineEvent}
             data-testId="add-event-btn"
           >
-            push
+            {t("Push")}
           </Button>
           <Button
             sx={{ backgroundColor: "orange" }}
@@ -76,7 +80,7 @@ const MachineEvents = () => {
             onClick={deleteMachineEvent}
             data-testId="delete-event-btn"
           >
-            pop
+            {t("Pop")}
           </Button>
         </Box>
         <TextField
@@ -84,7 +88,7 @@ const MachineEvents = () => {
           inputProps={{ "data-testId": "event-input" }}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          label="Add event to stack"
+          label={t("Add event")}
           variant="outlined"
         />
         <Box
@@ -108,7 +112,7 @@ const MachineEvents = () => {
           underline="hover"
           href={PATH.MAIN_PAGE}
         >
-          Go to the main page
+          {t("Go to the main page")}
         </Link>
       </Box>
     </Container>

@@ -32,6 +32,6 @@ describe("MachineEvents Integration Test", () => {
   it("should navigate to the main page", () => {
     cy.getByTestId("link-main-page").click();
 
-    cy.url().should("match", /\/$/);
+    cy.location("pathname").should("eq", "/");
   });
 });
