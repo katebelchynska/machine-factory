@@ -18,7 +18,6 @@ import {
 } from "./store/machineEventsSlice";
 import { PATH } from "../../core/constants/navigation";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "../../components/LanguageSwitcher";
 
 const MachineEvents = () => {
   const [value, setValue] = useState<string>("");
@@ -57,8 +56,7 @@ const MachineEvents = () => {
           alignItems: "center",
         }}
       >
-        <LanguageSwitcher />
-        <h1>{t("Machine Events")}</h1>
+        <h1>{t("STACK.STACK_TITLE")}</h1>
         <Box
           sx={{
             minWidth: "40%",
@@ -72,7 +70,7 @@ const MachineEvents = () => {
             onClick={addMachineEvent}
             data-testId="add-event-btn"
           >
-            {t("Push")}
+            {t("STACK.PUSH")}
           </Button>
           <Button
             sx={{ backgroundColor: "orange" }}
@@ -80,7 +78,7 @@ const MachineEvents = () => {
             onClick={deleteMachineEvent}
             data-testId="delete-event-btn"
           >
-            {t("Pop")}
+            {t("STACK.POP")}
           </Button>
         </Box>
         <TextField
@@ -88,7 +86,7 @@ const MachineEvents = () => {
           inputProps={{ "data-testId": "event-input" }}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          label={t("Add event")}
+          label={t("STACK.ADD_EVENT")}
           variant="outlined"
         />
         <Box
@@ -112,7 +110,7 @@ const MachineEvents = () => {
           underline="hover"
           href={PATH.MAIN_PAGE}
         >
-          {t("Go to the main page")}
+          {t("STACK.GO_TO_MAIN_PAGE")}
         </Link>
       </Box>
     </Container>

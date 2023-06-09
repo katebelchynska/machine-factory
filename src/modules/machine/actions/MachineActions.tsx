@@ -18,7 +18,7 @@ import {
 } from "./store/machineActionsSlice";
 import { PATH } from "../../core/constants/navigation";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "../../components/LanguageSwitcher";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 const MachineActions = () => {
   const [value, setValue] = useState<string>("");
@@ -58,7 +58,7 @@ const MachineActions = () => {
         }}
       >
         <LanguageSwitcher />
-        <h1>{t("Machine Actions")}</h1>
+        <h1>{t("QUEUE.QUEUE_TITLE")}</h1>
         <Box
           sx={{
             minWidth: "40%",
@@ -71,14 +71,14 @@ const MachineActions = () => {
             variant="contained"
             onClick={addMachineAction}
           >
-            {t("Enqueue")}
+            {t("QUEUE.ENQUEUE")}
           </Button>
           <Button
             data-testid="delete-action-btn"
             variant="contained"
             onClick={deleteMachineAction}
           >
-            {t("Dequeue")}
+            {t("QUEUE.DEQUEUE")}
           </Button>
         </Box>
         <TextField
@@ -86,7 +86,7 @@ const MachineActions = () => {
           inputProps={{ "data-testId": "action-input" }}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          label={t("Add action")}
+          label={t("QUEUE.ADD_ACTION")}
           variant="outlined"
         />
         <Box
@@ -107,7 +107,7 @@ const MachineActions = () => {
           underline="hover"
           href={PATH.EVENTS_PAGE}
         >
-          {t("Go to events")}
+          {t("QUEUE.GO_TO_EVENTS")}
         </Link>
       </Box>
     </Container>
