@@ -58,7 +58,7 @@ const MachineActions = () => {
         }}
       >
         <LanguageSwitcher />
-        <h1>{t("QUEUE.QUEUE_TITLE")}</h1>
+        <h1>{t("QUEUE.TITLE")}</h1>
         <Box
           sx={{
             minWidth: "40%",

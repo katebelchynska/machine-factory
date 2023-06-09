@@ -1,16 +1,21 @@
-import { Box, Button } from "@mui/material";
+import {
+  Box,
+  Select,
+  MenuItem,
+  FormControl,
+  SelectChangeEvent,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../core/store/hooks";
 import {
   Language,
   languageChange,
   languageSwitcherSelector,
-} from "../store/languageSwitcherSlice";
+} from "../../../core/store/slice/languageSwitcherSlice";
 
 const LanguageSwitcher = () => {
   const [lang, setLang] = useState<Language>({ lang: "en" });
-  const [isSelectedEn, setIsSelectedEn] = useState<boolean>(true);
-  const [isSelectedUa, setIsSelectedUa] = useState<boolean>(false);
+  const [value, setValue] = useState<string>("ua");
 
   const selectedLang = useAppSelector(languageSwitcherSelector);
   const dispatch = useAppDispatch();
@@ -19,30 +24,25 @@ const LanguageSwitcher = () => {
     setLang(selectedLang);
   }, [selectedLang]);
 
+  const handleChange = (event: SelectChangeEvent) => {
+    setValue(event.target.value);
+    switchLanguage(value);
+  };
+
   const switchLanguage = (lng: string) => {
     dispatch(languageChange(lng));
-    if (lng === "en") {
-      setIsSelectedEn(true);
-      setIsSelectedUa(false);
-    } else {
-      setIsSelectedEn(false);
-      setIsSelectedUa(true);
-    }
   };
   return (
     <Box>
-      <Button
-        variant={isSelectedEn ? "contained" : "text"}
-        onClick={() => switchLanguage("en")}
-      >
-        English
-      </Button>
-      <Button
-        variant={isSelectedUa ? "contained" : "text"}
-        onClick={() => switchLanguage("ua")}
-      >
-        Українська
-      </Button>
+      <FormControl>
+        <Select
+          value={value}
+          onChange={(e: SelectChangeEvent) => handleChange(e)}
+        >
+          <MenuItem value="ua">English</MenuItem>
+          <MenuItem value="en">Українська</MenuItem>
+        </Select>
+      </FormControl>
     </Box>
   );
 };

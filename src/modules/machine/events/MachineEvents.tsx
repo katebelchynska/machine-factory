@@ -56,7 +56,7 @@ const MachineEvents = () => {
           alignItems: "center",
         }}
       >
-        <h1>{t("STACK.STACK_TITLE")}</h1>
+        <h1>{t("STACK.TITLE")}</h1>
         <Box
           sx={{
             minWidth: "40%",

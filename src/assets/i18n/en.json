@@ -1,13 +1,13 @@
 {
   "QUEUE": {
-    "QUEUE_TITLE": "Machine Actions in Queue",
+    "TITLE": "Machine Actions in Queue",
     "ENQUEUE": "Enqueue",
     "DEQUEUE": "Dequeue",
     "ADD_ACTION": "Add action to queue",
     "GO_TO_EVENTS": "Go to machine events"
   },
   "STACK": {
-    "STACK_TITLE": "Machine Events in Stack",
+    "TITLE": "Machine Events in Stack",
     "PUSH": "Push",
     "POP": "Pop",
     "GO_TO_MAIN_PAGE": "Go to the main page",

@@ -5,7 +5,7 @@ import { Provider } from "react-redux/es/exports";
 import store from "./modules/core/store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ROUTER } from "./modules/core/constants/navigation";
-import i18n from "./assets/i18n/i18n";
+import i18n from "./modules/core/i18n";
 import { I18nextProvider } from "react-i18next";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

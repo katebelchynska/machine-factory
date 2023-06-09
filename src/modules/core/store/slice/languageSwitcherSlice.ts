@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../../core/store";
-import i18n from "../../../../assets/i18n/i18n";
+import { RootState } from "..";
+import i18n from "../../i18n";
 
 export interface Language {
   lang: string;

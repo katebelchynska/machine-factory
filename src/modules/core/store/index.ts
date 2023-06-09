@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import machineEvents from "../../machine/events/store/machineEventsSlice";
 import machineActions from "../../machine/actions/store/machineActionsSlice";
-import languageSwitcher from "../../machine/actions/store/languageSwitcherSlice";
+import languageSwitcher from "./slice/languageSwitcherSlice";
 
 const store = configureStore({
   reducer: { machineEvents, machineActions, languageSwitcher },
