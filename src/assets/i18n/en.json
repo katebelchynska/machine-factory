@@ -1,0 +1,20 @@
+{
+  "QUEUE": {
+    "TITLE": "Machine Actions in Queue",
+    "ENQUEUE": "Enqueue",
+    "DEQUEUE": "Dequeue",
+    "ADD_ACTION": "Add action to queue",
+    "GO_TO_EVENTS": "Go to machine events"
+  },
+  "STACK": {
+    "TITLE": "Machine Events in Stack",
+    "PUSH": "Push",
+    "POP": "Pop",
+    "GO_TO_MAIN_PAGE": "Go to the main page",
+    "ADD_EVENT": "Add event to stack"
+  },
+  "404": {
+    "PAGE_NOT_FOUND": "Page doesn't exist",
+    "BACK_TO_MAIN_PAGE": "Back to the main page"
+  }
+}
