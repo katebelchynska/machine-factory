@@ -1,5 +1,6 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../../core/store";
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../../../core/store';
 
 export interface Action {
   actionId: string;
@@ -9,7 +10,7 @@ export interface Action {
 const initialState: Action[] = [];
 
 const machineActionsSlice = createSlice({
-  name: "machineActions",
+  name: 'machineActions',
   initialState,
   reducers: {
     machineActionAdd: (state, action: PayloadAction<Action>) => {
@@ -21,8 +22,7 @@ const machineActionsSlice = createSlice({
   },
 });
 
-export const { machineActionAdd, machineActionDelete } =
-  machineActionsSlice.actions;
+export const { machineActionAdd, machineActionDelete } = machineActionsSlice.actions;
 
 export const machineActionSelector = (state: RootState) => state.machineActions;
 
