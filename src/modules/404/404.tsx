@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Box, Container, Link } from "@mui/material";
 import { PATH } from "../core/constants/navigation";
 import { useTranslation } from "react-i18next";
