@@ -2,9 +2,10 @@ import { Box, Button, Container, Link, List, ListItem, TextField } from '@mui/ma
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch, useAppSelector } from '../../core/store/hooks';
-import { Event, machineEventSelector, addEvent, deleteEvent, getEventsList } from './store/machineEventsSlice';
+import { machineEventSelector, addEvent, deleteEvent, getEventsList } from './store/machineEventsSlice';
 import { PATH } from '../../core/constants/navigation';
 import { useTranslation } from 'react-i18next';
+import { Event } from './models';
 
 const MachineEvents = () => {
   const [value, setValue] = useState<string>('');

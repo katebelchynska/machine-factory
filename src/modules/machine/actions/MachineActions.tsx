@@ -2,7 +2,8 @@ import { Box, Button, Container, Link, List, ListItem, TextField } from '@mui/ma
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch, useAppSelector } from '../../core/store/hooks';
-import { Action, addAction, deleteAction, getActionsList, machineActionSelector } from './store/machineActionsSlice';
+import { addAction, deleteAction, getActionsList, machineActionSelector } from './store/machineActionsSlice';
+import { Action } from './models';
 import { PATH } from '../../core/constants/navigation';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './components/LanguageSwitcher';

@@ -1,7 +1,7 @@
-import { Event } from './store/machineEventsSlice';
+import { Event } from './models';
 
 export const machineEventsService = {
-  getList(eventsArr: Event[]) {
+  getList(eventsArr: Event[]): Promise<Event[]> {
     return new Promise((res) => {
       setTimeout(() => {
         res(eventsArr);
@@ -9,19 +9,19 @@ export const machineEventsService = {
     });
   },
 
-  addMachineEvent(event: Event) {
+  addMachineEvent(event: Event): Promise<Event> {
     return new Promise((res) => {
       setTimeout(() => {
         res(event);
       }, 100);
     });
   },
-  deleteMachineEvent() {
+
+  deleteMachineEvent(): Promise<Event[]> {
     return new Promise((res) => {
       setTimeout(() => {
         res([]);
       }, 100);
     });
   },
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-} as any;
+};

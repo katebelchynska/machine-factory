@@ -1,27 +1,27 @@
-import { Action } from './store/machineActionsSlice';
+import { Action } from './models';
 
 export const machineActionsService = {
-  getList(actionsArr: Action[]) {
+  getList(list: Action[]): Promise<Action[]> {
     return new Promise((res) => {
       setTimeout(() => {
-        res(actionsArr);
+        res(list);
       }, 1000);
     });
   },
 
-  addMachineAction(action: Action) {
+  addMachineAction(action: Action): Promise<Action> {
     return new Promise((res) => {
       setTimeout(() => {
         res(action);
       }, 100);
     });
   },
-  deleteMachineAction() {
+
+  deleteMachineAction(): Promise<Action[]> {
     return new Promise((res) => {
       setTimeout(() => {
         res([]);
       }, 100);
     });
   },
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-} as any;
+};

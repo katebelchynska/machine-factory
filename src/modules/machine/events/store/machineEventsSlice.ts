@@ -1,65 +1,46 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../../core/store';
 import { machineEventsService } from '../machineEventsService';
+import { Event, EventState, LoadingStatus } from '../models';
 
 const { addMachineEvent, deleteMachineEvent, getList } = machineEventsService;
 
-const useHttpAdd = async (event: Event) => {
-  try {
-    const res = await addMachineEvent(event);
-    return res;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const useHttpDelete = async () => {
-  try {
-    const res = await deleteMachineEvent();
-    return res;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const useHttpGetEventsList = async (eventsArr: Event[]) => {
-  try {
-    const res = await getList(eventsArr);
-    return res;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 export const addEvent = createAsyncThunk('events/addEvent', async (event: Event) => {
-  const data = await useHttpAdd(event);
+  const data = addMachineEvent(event)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   return data;
 });
 
 export const deleteEvent = createAsyncThunk('events/deleteEvent', async () => {
-  const data = await useHttpDelete();
+  const data = deleteMachineEvent()
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   return data;
 });
 
 export const getEventsList = createAsyncThunk('events/getEventList', async (eventsArr: Event[]) => {
-  const data = await useHttpGetEventsList(eventsArr);
-  console.log(data);
+  const data = getList(eventsArr)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   return data;
 });
 
-export interface Event {
-  eventId: string;
-  title: string;
-}
-
-export interface EventState {
-  events: Event[];
-  loading: 'idle' | 'pending' | 'succeeded' | 'failed';
-}
-
 export const initialState = {
   events: [],
-  loading: 'idle',
+  loading: LoadingStatus.Idle,
 } as EventState;
 
 const machineEventsSlice = createSlice({
@@ -69,16 +50,16 @@ const machineEventsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addEvent.fulfilled, (state, action) => {
-        state.events.push(action.payload);
-        state.loading = 'succeeded';
+        state.events.push(action.payload as Event);
+        state.loading = LoadingStatus.Succeeded;
       })
       .addCase(deleteEvent.fulfilled, (state) => {
         state.events.pop();
-        state.loading = 'succeeded';
+        state.loading = LoadingStatus.Succeeded;
       })
       .addCase(getEventsList.fulfilled, (state) => {
         state.events;
-        state.loading = 'succeeded';
+        state.loading = LoadingStatus.Succeeded;
       });
   },
 });

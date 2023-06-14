@@ -1,65 +1,46 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../../core/store';
 import { machineActionsService } from '../machineActionsService';
+import { Action, ActionState, LoadingStatus } from '../models';
 
 const { addMachineAction, deleteMachineAction, getList } = machineActionsService;
 
-const useHttpAdd = async (action: Action) => {
-  try {
-    const res = await addMachineAction(action);
-    return res;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const useHttpDelete = async () => {
-  try {
-    const res = await deleteMachineAction();
-    return res;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const useHttpGetActionsList = async (actionsArr: Action[]) => {
-  try {
-    const res = await getList(actionsArr);
-    return res;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 export const addAction = createAsyncThunk('actions/addAction', async (action: Action) => {
-  const data = await useHttpAdd(action);
+  const data = addMachineAction(action)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   return data;
 });
 
 export const deleteAction = createAsyncThunk('actions/deleteAction', async () => {
-  const data = await useHttpDelete();
+  const data = deleteMachineAction()
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   return data;
 });
 
-export const getActionsList = createAsyncThunk('actions/getActionList', async (actionsArr: Action[]) => {
-  const data = await useHttpGetActionsList(actionsArr);
-  console.log(data);
+export const getActionsList = createAsyncThunk('actions/getActionList', async (list: Action[]) => {
+  const data = getList(list)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   return data;
 });
-
-export interface Action {
-  actionId: string;
-  title: string;
-}
-
-export interface ActionState {
-  actions: Action[];
-  loading: 'idle' | 'pending' | 'succeeded' | 'failed';
-}
 
 export const initialState = {
   actions: [],
-  loading: 'idle',
+  loading: LoadingStatus.Idle,
 } as ActionState;
 
 const machineActionsSlice = createSlice({
@@ -69,16 +50,16 @@ const machineActionsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addAction.fulfilled, (state, action) => {
-        state.actions.push(action.payload);
-        state.loading = 'succeeded';
+        state.actions.push(action.payload as Action);
+        state.loading = LoadingStatus.Succeeded;
       })
       .addCase(deleteAction.fulfilled, (state) => {
         state.actions.shift();
-        state.loading = 'succeeded';
+        state.loading = LoadingStatus.Succeeded;
       })
       .addCase(getActionsList.fulfilled, (state) => {
         state.actions;
-        state.loading = 'succeeded';
+        state.loading = LoadingStatus.Succeeded;
       });
   },
 });
