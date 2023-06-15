@@ -1,26 +1,14 @@
-import {
-  Box,
-  Button,
-  Container,
-  Link,
-  List,
-  ListItem,
-  TextField,
-} from "@mui/material";
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { useAppDispatch, useAppSelector } from "../../core/store/hooks";
-import {
-  Event,
-  machineEventAdd,
-  machineEventDelete,
-  machineEventSelector,
-} from "./store/machineEventsSlice";
-import { PATH } from "../../core/constants/navigation";
-import { useTranslation } from "react-i18next";
+import { Box, Button, Container, Link, List, ListItem, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { useAppDispatch, useAppSelector } from '../../core/store/hooks';
+import { machineEventSelector, addEvent, deleteEvent, getEventsList } from './store/machineEventsSlice';
+import { PATH } from '../../core/constants/navigation';
+import { useTranslation } from 'react-i18next';
+import { Event } from './models';
 
 const MachineEvents = () => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>('');
   const [list, setList] = useState<Array<Event>>([]);
 
   const { t } = useTranslation();
@@ -37,80 +25,76 @@ const MachineEvents = () => {
       eventId: uuidv4(),
       title: value,
     };
-    dispatch(machineEventAdd(newMachineEvent));
-    setValue("");
+    dispatch(addEvent(newMachineEvent));
+    dispatch(getEventsList());
+    setValue('');
   };
 
   const deleteMachineEvent = () => {
-    dispatch(machineEventDelete());
+    dispatch(deleteEvent());
   };
 
   return (
     <Container maxWidth="md">
       <Box
         sx={{
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-around",
-          alignItems: "center",
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-around',
+          alignItems: 'center',
         }}
       >
-        <h1>{t("STACK.TITLE")}</h1>
+        <h1>{t('STACK.TITLE')}</h1>
         <Box
           sx={{
-            minWidth: "40%",
-            display: "flex",
-            justifyContent: "space-between",
+            minWidth: '40%',
+            display: 'flex',
+            justifyContent: 'space-between',
           }}
         >
           <Button
-            sx={{ backgroundColor: "orange" }}
+            sx={{ backgroundColor: 'orange' }}
             variant="contained"
             onClick={addMachineEvent}
             data-testId="add-event-btn"
           >
-            {t("STACK.PUSH")}
+            {t('STACK.PUSH')}
           </Button>
           <Button
-            sx={{ backgroundColor: "orange" }}
+            sx={{ backgroundColor: 'orange' }}
             variant="contained"
             onClick={deleteMachineEvent}
             data-testId="delete-event-btn"
           >
-            {t("STACK.POP")}
+            {t('STACK.POP')}
           </Button>
         </Box>
         <TextField
           fullWidth
-          inputProps={{ "data-testId": "event-input" }}
+          inputProps={{ 'data-testId': 'event-input' }}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          label={t("STACK.ADD_EVENT")}
+          label={t('STACK.ADD_EVENT')}
           variant="outlined"
         />
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
           }}
         >
           <List data-testId="event-list">
             {list.map((item) => (
-              <ListItem sx={{ color: "red" }} key={item.eventId}>
+              <ListItem sx={{ color: 'red' }} key={item.eventId}>
                 {item.title}
               </ListItem>
             ))}
           </List>
         </Box>
-        <Link
-          data-testId="link-main-page"
-          color="orange"
-          underline="hover"
-          href={PATH.MAIN_PAGE}
-        >
-          {t("STACK.GO_TO_MAIN_PAGE")}
+        <Link data-testId="link-main-page" color="orange" underline="hover" href={PATH.MAIN_PAGE}>
+          {t('STACK.GO_TO_MAIN_PAGE')}
         </Link>
       </Box>
     </Container>
