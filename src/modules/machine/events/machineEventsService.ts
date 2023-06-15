@@ -1,10 +1,11 @@
 import { Event } from './models';
+import { initialEventsState } from '../../../test/mocks/events';
 
 export const machineEventsService = {
-  getList(eventsArr: Event[]): Promise<Event[]> {
+  getList(): Promise<Event[]> {
     return new Promise((res) => {
       setTimeout(() => {
-        res(eventsArr);
+        res(initialEventsState.machineEvents);
       }, 100);
     });
   },

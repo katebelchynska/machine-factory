@@ -27,7 +27,7 @@ const MachineActions = () => {
       title: value,
     };
     dispatch(addAction(newMachineAction));
-    dispatch(getActionsList(list));
+    dispatch(getActionsList());
     setValue('');
   };
 

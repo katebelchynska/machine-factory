@@ -27,8 +27,8 @@ export const deleteAction = createAsyncThunk('actions/deleteAction', async () =>
   return data;
 });
 
-export const getActionsList = createAsyncThunk('actions/getActionList', async (list: Action[]) => {
-  const data = getList(list)
+export const getActionsList = createAsyncThunk('actions/getActionList', async () => {
+  const data = getList()
     .then((res) => {
       return res;
     })

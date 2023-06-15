@@ -5,13 +5,13 @@ import { initialEventsState } from '../../../test/mocks/events';
 describe('machineEventsService', () => {
   it('getList should return a list of events', async () => {
     const list: Event[] = initialEventsState.machineEvents;
-    const result = await machineEventsService.getList(list);
+    const result = await machineEventsService.getList();
     expect(result).toEqual(list);
   });
 
   it('getList should resolve after a delay', async () => {
     const list: Event[] = initialEventsState.machineEvents;
-    const promise = machineEventsService.getList(list);
+    const promise = machineEventsService.getList();
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 

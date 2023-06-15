@@ -27,8 +27,8 @@ export const deleteEvent = createAsyncThunk('events/deleteEvent', async () => {
   return data;
 });
 
-export const getEventsList = createAsyncThunk('events/getEventList', async (eventsArr: Event[]) => {
-  const data = getList(eventsArr)
+export const getEventsList = createAsyncThunk('events/getEventList', async () => {
+  const data = getList()
     .then((res) => {
       return res;
     })

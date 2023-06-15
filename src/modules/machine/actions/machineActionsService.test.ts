@@ -5,13 +5,13 @@ import { initialActionsState } from '../../../test/mocks/actions';
 describe('machineActionsService', () => {
   it('getList should return a list of actions', async () => {
     const list: Action[] = initialActionsState.machineActions;
-    const result = await machineActionsService.getList(list);
+    const result = await machineActionsService.getList();
     expect(result).toEqual(list);
   });
 
   it('getList should resolve after a delay', async () => {
     const list: Action[] = initialActionsState.machineActions;
-    const promise = machineActionsService.getList(list);
+    const promise = machineActionsService.getList();
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 

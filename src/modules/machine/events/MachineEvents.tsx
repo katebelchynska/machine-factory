@@ -26,7 +26,7 @@ const MachineEvents = () => {
       title: value,
     };
     dispatch(addEvent(newMachineEvent));
-    dispatch(getEventsList(list));
+    dispatch(getEventsList());
     setValue('');
   };
 

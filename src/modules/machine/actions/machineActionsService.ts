@@ -1,10 +1,11 @@
 import { Action } from './models';
+import { initialActionsState } from '../../../test/mocks/actions';
 
 export const machineActionsService = {
-  getList(list: Action[]): Promise<Action[]> {
+  getList(): Promise<Action[]> {
     return new Promise((res) => {
       setTimeout(() => {
-        res(list);
+        res(initialActionsState.machineActions);
       }, 1000);
     });
   },
