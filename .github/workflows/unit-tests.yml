@@ -1,16 +1,19 @@
 # workflow name
-name: Unit Tests
+name: Unit Tests and Linter
 
 # execute on events
 on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
   push:
     branches:
-      - master
+      - main
 
 # jobs to run
 jobs:
-  
-  # install dependencies and run test command
+        
+  # install dependencies and run test and lint command
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -20,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 16
 
       # 2: Checkout repository in the CWD
       - name: Checkout repository
@@ -33,3 +36,7 @@ jobs:
       # 4: run test command
       - name: Run test command
         run: npm run test
+        
+      # 5: run linter
+      - name: Run lint command
+        run: npm run lint
