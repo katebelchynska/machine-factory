@@ -13,8 +13,6 @@ describe('machineEventsService', () => {
     const list: Event[] = initialEventsState.machineEvents;
     const promise = machineEventsService.getList();
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
     const result = await promise;
     expect(result).toEqual(list);
   });
@@ -29,8 +27,6 @@ describe('machineEventsService', () => {
     const action: Event = initialEventsState.machineEvents[0];
     const promise = machineEventsService.addMachineEvent(action);
 
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
     const result = await promise;
     expect(result).toEqual(action);
   });
@@ -42,8 +38,6 @@ describe('machineEventsService', () => {
 
   it('deleteMachineEvent should resolve after a delay', async () => {
     const promise = machineEventsService.deleteMachineEvent();
-
-    await new Promise((resolve) => setTimeout(resolve, 100));
 
     const result = await promise;
     expect(result).toEqual([]);

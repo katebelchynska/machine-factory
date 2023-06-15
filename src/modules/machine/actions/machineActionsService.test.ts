@@ -13,8 +13,6 @@ describe('machineActionsService', () => {
     const list: Action[] = initialActionsState.machineActions;
     const promise = machineActionsService.getList();
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
     const result = await promise;
     expect(result).toEqual(list);
   });
@@ -29,8 +27,6 @@ describe('machineActionsService', () => {
     const action: Action = initialActionsState.machineActions[0];
     const promise = machineActionsService.addMachineAction(action);
 
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
     const result = await promise;
     expect(result).toEqual(action);
   });
@@ -42,8 +38,6 @@ describe('machineActionsService', () => {
 
   it('deleteMachineAction should resolve after a delay', async () => {
     const promise = machineActionsService.deleteMachineAction();
-
-    await new Promise((resolve) => setTimeout(resolve, 100));
 
     const result = await promise;
     expect(result).toEqual([]);
