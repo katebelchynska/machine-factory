@@ -30,6 +30,7 @@ module.exports = {
       },
     },
   },
+  plugins: ['react-hooks'],
   rules: {
     'no-unused-vars': [
       'error',
@@ -41,5 +42,11 @@ module.exports = {
       },
     ],
     'react/react-in-jsx-scope': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    "react-hooks/exhaustive-deps": [
+      "warn", {
+        "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
+      }
+    ]
   },
 };
