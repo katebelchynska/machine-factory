@@ -10,6 +10,7 @@ import LanguageSwitcher from './components/LanguageSwitcher';
 
 const MachineActions = () => {
   const [value, setValue] = useState<string>('');
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [list, setList] = useState<Array<Action>>([]);
 
   const { t } = useTranslation();
