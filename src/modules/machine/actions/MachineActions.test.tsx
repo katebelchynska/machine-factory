@@ -25,7 +25,7 @@ describe("MachineActions component", () => {
       </BrowserRouter>
     );
 
-    const addButton = screen.getByTestId("add-action-btn");
+    const addButton = screen.getByTestId("add-action-btnn");
     const inputAction = screen.getByTestId("action-input");
 
     fireEvent.change(inputAction, { target: { value: "New Action" } });
