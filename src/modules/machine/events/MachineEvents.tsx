@@ -1,15 +1,17 @@
 import { Box, Button, Container, Link, List, ListItem, TextField } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch, useAppSelector } from '../../core/store/hooks';
 import { machineEventSelector, addEvent, deleteEvent, getEventsList } from './store/machineEventsSlice';
 import { PATH } from '../../core/constants/navigation';
 import { useTranslation } from 'react-i18next';
 import { Event } from './models';
+import { useRecoilState } from 'recoil';
+import { listEventsState, textEventState } from '../../core/state/atoms';
 
 const MachineEvents = () => {
-  const [value, setValue] = useState<string>('');
-  const [list, setList] = useState<Array<Event>>([]);
+  const [value, setValue] = useRecoilState<string>(textEventState);
+  const [list, setList] = useRecoilState<Array<Event>>(listEventsState);
 
   const { t } = useTranslation();
 
@@ -18,7 +20,7 @@ const MachineEvents = () => {
 
   useEffect(() => {
     setList(selectedMachineEvents);
-  }, [selectedMachineEvents]);
+  }, [selectedMachineEvents, setList]);
 
   const addMachineEvent = () => {
     const newMachineEvent = {

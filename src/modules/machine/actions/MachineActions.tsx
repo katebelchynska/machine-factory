@@ -1,5 +1,5 @@
 import { Box, Button, Container, Link, List, ListItem, TextField } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch, useAppSelector } from '../../core/store/hooks';
 import { addAction, deleteAction, getActionsList, machineActionSelector } from './store/machineActionsSlice';
@@ -7,10 +7,12 @@ import { Action } from './models';
 import { PATH } from '../../core/constants/navigation';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './components/LanguageSwitcher';
+import { useRecoilState } from 'recoil';
+import { textActionState, listActionsState } from '../../core/state/atoms';
 
 const MachineActions = () => {
-  const [value, setValue] = useState<string>('');
-  const [list, setList] = useState<Array<Action>>([]);
+  const [text, setText] = useRecoilState<string>(textActionState);
+  const [list, setList] = useRecoilState<Array<Action>>(listActionsState);
 
   const { t } = useTranslation();
 
@@ -19,16 +21,16 @@ const MachineActions = () => {
 
   useEffect(() => {
     setList(selectedMachineActions);
-  }, [selectedMachineActions]);
+  }, [selectedMachineActions, setList]);
 
   const addMachineAction = () => {
     const newMachineAction = {
       actionId: uuidv4(),
-      title: value,
+      title: text,
     };
     dispatch(addAction(newMachineAction));
     dispatch(getActionsList());
-    setValue('');
+    setText('');
   };
 
   const deleteMachineAction = () => {
@@ -65,8 +67,8 @@ const MachineActions = () => {
         <TextField
           fullWidth
           inputProps={{ 'data-testId': 'action-input' }}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
           label={t('QUEUE.ADD_ACTION')}
           variant="outlined"
         />
